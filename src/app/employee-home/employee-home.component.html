@@ -1,107 +1,45 @@
-<app-employee-header></app-employee-header>
+<app-employee-header> </app-employee-header>
+
 <div class="main-content">
     <div class="header-content">
-        <div class="emp-detail-text">Employee Details </div>
-        <a><img class="search" src=""></a>
+        <div class="emp-detail-text">
+        </div>
         <a class="add-button" routerLink="/add">
+            <img src="../../../assets/icons/add-24px.svg" alt="Add User Logo">Add User
             <img src="../assets/icons/add-24px.svg" alt="Add User Logo">Add User
         </a>
     </div>
-
-    <table id="table-display" class="table">
-        <tr>
-            <th></th>
-            <th>NAME</th>
-            <th>GENDER</th>
-            <th>DEPARTEMENT</th>
-            <th>SALARY</th>
-            <th>START DATE</th>
-            <th>ACTIONS</th>
-        </tr>
-        <tr>
-            <td>
-                <img class="profile" src="../assets/profile-images/Ellipse -3.png" alt="">
-            </td>
-            <td>Gagan Reddy</td>
-            <td>Male</td>
-            <td>
-                <div class="dept-label">Finance</div>
-
-            </td>
-            <td>₹300000</td>
-            <td>1 Nov 2021</td>
-            <td>
-                <img id="1" onclick="remove(this)" src="../assets/icons/delete-black-18dp.svg" alt="delete">
-                <img id="1" onclick="update(this)" src="../assets/icons/create-black-18dp.svg" alt="edit">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <img class="profile" src="../assets/profile-images/Ellipse -1.png" alt="">
-            </td>
-            <td>Shravya Reddy</td>
-            <td>Female</td>
-            <td>
-
-                <div class="dept-label">sales</div>
-            </td>
-            <td>₹200000</td>
-            <td>9 Oct 2021</td>
-            <td>
-                <img id="1" onclick="remove(this)" src="../assets/icons/delete-black-18dp.svg" alt="delete">
-                <img id="1" onclick="update(this)" src="../assets/icons/create-black-18dp.svg" alt="edit">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <img class="profile" src="../assets/profile-images/Ellipse -2.png" alt="">
-            </td>
-            <td>Dilip Gowda</td>
-            <td>Male</td>
-            <td>
-
-                <div class="dept-label">HR</div>
-            </td>
-            <td>₹200000</td>
-            <td>2 Nov 2020</td>
-            <td>
-                <img id="1" onclick="remove(this)" src="../assets/icons/delete-black-18dp.svg" alt="delete">
-                <img id="1" onclick="update(this)" src="../assets/icons/create-black-18dp.svg" alt="edit">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <img class="profile" src="../assets/profile-images/Ellipse -5.png" alt="">
-            </td>
-            <td>Chathan</td>
-            <td>Male</td>
-            <td>
-                <div class="dept-label">Sales</div>
-
-            </td>
-            <td>₹100000</td>
-            <td>5 Jan 2019</td>
-            <td>
-                <img id="1" onclick="remove(this)" src="../assets/icons/delete-black-18dp.svg" alt="delete">
-                <img id="1" onclick="update(this)" src="../assets/icons/create-black-18dp.svg" alt="edit">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <img class="profile" src="../assets/profile-images/Ellipse -4.png" alt="">
-            </td>
-            <td>Bindhu</td>
-            <td>Femail</td>
-            <td>
-                <div class="dept-label">Finance</div>
-
-            </td>
-            <td>₹200000</td>
-            <td>12 Jul 2018</td>
-            <td>
-                <img id="1" onclick="remove(this)" src="../assets/icons/delete-black-18dp.svg" alt="delete">
-                <img id="1" onclick="update(this)" src="../assets/icons/create-black-18dp.svg" alt="edit">
-            </td>
-        </tr>
-    </table>
+    <div class="table-main">
+        <table id="table-display" class="table">
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Department</th>
+                <th>Salary</th>
+                <th>Start Date</th>
+                <th>Actions</th>
+            </tr>
+            <tr *ngFor="let employee of employeeDetails ">
+                <td>
+                    <img class="profile" src={{employee.profilePic}} alt="">
+                </td>
+                <td>{{employee.name}}</td>
+                <td>{{employee.gender}}</td>
+                <td>
+                    <div class="dept-label" *ngFor="let department of employee.department ">
+                        {{department}}
+                    </div>
+                </td>
+                <td>{{employee.salary}}</td>
+                <td>{{employee.startDate}}</td>
+                <td>
+                    <img id={{employee.id}} onclick="remove(this)" src="../assets/icons/delete-black-18dp.svg"
+                        alt="delete">
+                    <img id={{employee.id}} onclick="update(this)" src="../assets/icons/create-black-18dp.svg"
+                        alt="edit">
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
